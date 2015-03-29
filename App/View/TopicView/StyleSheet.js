@@ -40,5 +40,35 @@ module.exports = StyleSheet.create({
 	content: {
 		fontSize: 14,
 		color: '#444444'
+	},
+
+	member: {
+		flex: 1,
+		flexDirection: 'row',
+		backgroundColor: '#eeeeee',
+		padding: 8,
+		borderBottomWidth: 1,
+		borderColor: '#e2e2e2'
+	},
+	memberInfo: {
+		flex: 1,
+		flexDirection: 'row'
+	},
+	memberAvatar: {
+		width: 16,
+		height: 16,
+		borderRadius: 8
+	},
+	memberName: {
+		flex: 1,
+		marginLeft: 4,
+		color: '#656666'
+	},
+	memberTime: {
+		flex: 1,
+		height: 16,
+		lineHeight: 16,
+		alignItems: 'flex-end',
+		color: '#666666'
 	}
 });

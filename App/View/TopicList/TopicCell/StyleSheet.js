@@ -53,7 +53,7 @@ module.exports = StyleSheet.create({
 	},
 	replyNumWrapper: {
 		width: 30,
-		textAlign: 'right',
+		// textAlign: 'right',
 		marginLeft: 10,
 		justifyContent: 'center',
 		alignSelf: 'center',
