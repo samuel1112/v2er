@@ -20,14 +20,24 @@ var TopicList = React.createClass({
 			dataSource: new ListView.DataSource({
 				rowHasChanged: (r1, r2) => r1 !== r2
 			}),
-			loaded: false
+			loaded: false,
+			pageLoaded: false,
+			currentPage: 0
 		};
 	},
 	componentDidMount: function(){
 		this.fetchData();
 	},
 	fetchData: function(){
-		fetch(Api.getLatestTopic())
+		this.setState({
+			pageLoaded: false
+		});
+		console.info(Api.getLatestTopic({
+			p: this.state.currentPage+1
+		}));
+		fetch(Api.getLatestTopic({
+			p: this.state.currentPage+1
+		}))
 			.then((response) => {
 				// console.log(response);
 				return response.json();
@@ -35,7 +45,9 @@ var TopicList = React.createClass({
 			.then((responseData) => {
 				this.setState({
 					dataSource: this.state.dataSource.cloneWithRows(responseData),
-					loaded: true
+					loaded: true,
+					currentPage: this.state.currentPage+1,
+					pageLoaded: true
 				});
 			})
 			.done();
@@ -50,7 +62,7 @@ var TopicList = React.createClass({
 		return (
 			<View style={Style.container}>
 				<Text style={Style.loadingText}>
-					Loading...
+					{'Loading...'}
 				</Text>
 			</View>
 		);
@@ -61,6 +73,9 @@ var TopicList = React.createClass({
 			<ListView
 				dataSource={this.state.dataSource}
 				renderRow={this.renderTopicCell}
+				renderFooter={this.renderFooterLoading}
+				onEndReached={this.fetchData}
+				onEndReachedThreshold={20}
 				style={Style.listView} />
 		);
 	},
@@ -72,8 +87,18 @@ var TopicList = React.createClass({
 				data={data} />
 		); 
 	},
+	renderFooterLoading: function(){
+		if(this.state.pageLoaded){
+			return null;
+		}
+		return (
+			<View style={Style.loading}>
+				<Text style={Style.loadingInfo}>{'loading...'}</Text>
+			</View>
+		);
+	},
 	selectTopic: function(data){
-		console.log(data);
+		// console.log(data);
 		this.props.navigator.push({
 			title: data.title,
 			component: TopicView,

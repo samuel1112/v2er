@@ -81,7 +81,7 @@ var TopicView = React.createClass({
 							</Text>
 						</View>
 						<View style={Style.memberTime}>
-							<Text>{beautyTime(createTime)}</Text>
+							<Text style={Style.createTime}>{beautyTime(createTime)}</Text>
 						</View>
 					</View>
 					<View style={Style.header}>

@@ -26,5 +26,16 @@ module.exports = StyleSheet.create({
 	},
 	listView: {
 		backgroundColor: '#efefef'
+	},
+	loading: {
+		backgroundColor:'#efefef',
+		padding: 20,
+		justifyContent: 'center',
+		alignItems: 'center',
+		alignSelf: 'center'
+	},
+	loadingInfo: {
+		fontSize: 14,
+		color: '#888888'
 	}
 });

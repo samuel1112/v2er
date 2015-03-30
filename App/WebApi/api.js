@@ -39,8 +39,8 @@ function _getNodeInfo(o){
 	return HOST_URI+NODE_INFO+'?'+_obj2uri(o);
 }
 
-function _getLatestTopic(){
-	return HOST_URI+LATEST_TOPIC;
+function _getLatestTopic(o){
+	return HOST_URI+LATEST_TOPIC+'?'+_obj2uri(o);
 }
 
 function _getReplies(o){
