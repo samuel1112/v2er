@@ -67,6 +67,8 @@ var TopicView = React.createClass({
 	},
 	renderTopicDetail: function(){
 		var createTime = new Date(this.props.data.created*1000);
+		// var _text = textRenderer(this.props.data.content_rendered,this.linkClick);
+		// console.log(_text)
 		return (
 			<View style={Style.wrapper}>
 				<View style={Style.container}>
@@ -99,6 +101,9 @@ var TopicView = React.createClass({
 		return (
 			<ReplyCell data={data} />
 		);
+	},
+	linkClick: function(o){
+		console.log(o);
 	}
 });
 

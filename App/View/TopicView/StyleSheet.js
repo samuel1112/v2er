@@ -67,7 +67,6 @@ module.exports = StyleSheet.create({
 	memberTime: {
 		flex: 1,
 		height: 16,
-		lineHeight: 16,
 		alignItems: 'flex-end'
 	},
 	createTime: {
