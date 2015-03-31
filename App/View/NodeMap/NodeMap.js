@@ -3,7 +3,8 @@ var React = require('react-native');
 
 var {
 	Text,
-	View
+	View,
+	ListView
 } = React;
 
 var Style = require('./StyleSheet');
@@ -12,7 +13,9 @@ var Api = require('../../WebApi/api');
 var NodeMap = React.createClass({
 	getInitialState: function(){
 		return {
-			nodeDataSource: [],
+			nodeDataSource: new ListView.DataSource({
+				rowHasChanged: (r1, r2) => r1 !== r2
+			}),
 			loaded: false
 		};
 	},
@@ -28,7 +31,7 @@ var NodeMap = React.createClass({
 			.then((responseData) => {
 				console.log(responseData[0]);
 				this.setState({
-					nodeDataSource: responseData,
+					nodeDataSource: this.state.nodeDataSource.cloneWithRows(responseData),
 					loaded: true
 				});
 			})
@@ -40,19 +43,13 @@ var NodeMap = React.createClass({
 		}
 
 		return (
-			<View style={Style.container}>
-				{
-					this.state.nodeDataSource.forEach(function(v,i){
-						return (
-							<View style={Style.nodeView}>
-								<Text style={Style.nodeText}>
-								{i}
-								</Text>
-							</View>
-						);
-					})
-				}
-			</View>
+
+			<ListView
+				dataSource={this.state.nodeDataSource}
+				renderRow={this.renderNodeCell}
+				onEndReachedThreshold={20}
+				style={Style.nodeContainer} />
+
 		);
 	},
 	renderLoading: function(){
@@ -63,6 +60,19 @@ var NodeMap = React.createClass({
 				</Text>
 			</View>
 		);
+	},
+	renderNodeCell: function(data){
+		return (
+			<View style={Style.nodeViewContainer}>
+				<View style={Style.nodeView}>
+					<Text style={Style.nodeText}>
+						{data.title}
+					</Text>
+				</View>
+				<View style={Style.nodeNumContainer}>
+				</View>
+			</View>
+		);			
 	}
 });
 

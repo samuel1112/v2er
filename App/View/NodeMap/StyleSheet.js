@@ -14,6 +14,9 @@ module.exports = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
+	nodeContainer: {
+		backgroundColor: '#efefef'
+	},
 	loadingText: {
 		fontSize: 25,
 		textAlign: 'center',
@@ -24,15 +27,26 @@ module.exports = StyleSheet.create({
 		color: '#666E74',
 		flex:1
 	},
-	nodeView: {
-		backgroundColor: '#ff6600',
+	nodeViewContainer: {
+		backgroundColor: '#ffffff',
 		flex:1,
-		alignItems: 'center',
-		borderRadius: 10,
-		height: 20
+		height: 50,
+		marginBottom: 20,
+		borderTopWidth: 1,
+		borderBottomWidth: 1,
+		borderColor: '#dedede',
+		justifyContent: 'center'
+	},
+	nodeView: {
+		flex: 1,
+		padding: 10
+	},
+	nodeNumContainer: {
+		width: 40,
+		backgroundColor: '#ffffff'
 	},
 	nodeText: {
 		fontSize: 16,
-		color: '#ffffff'
+		color: '#000000'
 	}
 });
