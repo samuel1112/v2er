@@ -37,8 +37,8 @@ module.exports = StyleSheet.create({
 	},
 	replyContent: {
 		marginLeft: 5,
-		fontSize: 16,
-		color: '#332233'
+		fontSize: 14,
+		color: '#666772'
 	},
 	avatar: {
 		width: 20,

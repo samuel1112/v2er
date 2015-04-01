@@ -30,9 +30,9 @@ module.exports = StyleSheet.create({
 	nodeViewContainer: {
 		backgroundColor: '#ffffff',
 		flex:1,
-		height: 50,
 		marginBottom: 20,
 		borderTopWidth: 1,
+		flexDirection: 'row',
 		borderBottomWidth: 1,
 		borderColor: '#dedede',
 		justifyContent: 'center'
@@ -42,11 +42,31 @@ module.exports = StyleSheet.create({
 		padding: 10
 	},
 	nodeNumContainer: {
-		width: 40,
-		backgroundColor: '#ffffff'
+		width: 60,
+		backgroundColor: '#969cb1',
+		alignItems: 'center',
+		justifyContent: 'center',
+		alignSelf: 'center',
+		margin: 20,
+		height: 24,
+		borderRadius: 12
+	},
+	nodeNum: {
+		color: '#efefef'
 	},
 	nodeText: {
 		fontSize: 16,
-		color: '#000000'
+		color: '#666E74',
+		fontWeight: '600'
+	},
+	nodeHeader: {
+		fontSize: 14,
+		color: '#787883',
+		fontWeight: '400'
+	},
+	nodeFooter: {
+		fontSize: 12,
+		color: '#787883',
+		fontWeight: '200'
 	}
 });

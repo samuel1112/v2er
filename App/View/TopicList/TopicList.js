@@ -4,7 +4,8 @@ var React = require('react-native');
 var {
 	Text,
 	View,
-	ListView
+	ListView,
+	NetInfo
 } = React;
 
 var Style = require('./StyleSheet');
@@ -22,19 +23,39 @@ var TopicList = React.createClass({
 			}),
 			loaded: false,
 			pageLoaded: false,
-			currentPage: 0
+			currentPage: 0,
+			showImg: false
 		};
 	},
 	componentDidMount: function(){
 		this.fetchData();
+		NetInfo.reachabilityIOS.fetch().done((reach) => {
+			console.log('Initial: ' + reach);
+			if(reach !== 'cell' ){
+				this.setState({
+					showImg: true
+				});
+			}
+		});
+		function handleFirstReachabilityChange(reach) {
+			console.log('First change: ' + reach);
+			if(reach !== 'cell'){
+				this.setState({
+					showImg: true
+				});
+			} else {
+				this.setState({
+					showImg: false
+				});
+			}
+			NetInfo.reachabilityIOS.removeEventListener('change',handleFirstReachabilityChange);
+		}
+		NetInfo.reachabilityIOS.addEventListener('change',handleFirstReachabilityChange.bind(this));
 	},
 	fetchData: function(){
 		this.setState({
 			pageLoaded: false
 		});
-		console.info(Api.getLatestTopic({
-			p: this.state.currentPage+1
-		}));
 		fetch(Api.getLatestTopic({
 			p: this.state.currentPage+1
 		}))
@@ -84,6 +105,7 @@ var TopicList = React.createClass({
 			<TopicCell onSelect={
 					() => this.selectTopic(data)
 				}
+				showImg={this.state.showImg}
 				data={data} />
 		); 
 	},

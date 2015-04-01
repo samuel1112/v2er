@@ -9,6 +9,7 @@ var {
 
 var Style = require('./StyleSheet');
 var Api = require('../../WebApi/api');
+var textRender  = require('../../Util/textRenderer');
 
 var NodeMap = React.createClass({
 	getInitialState: function(){
@@ -68,8 +69,16 @@ var NodeMap = React.createClass({
 					<Text style={Style.nodeText}>
 						{data.title}
 					</Text>
+					<Text style={Style.nodeHeader}>
+						{data.header}
+					</Text>
+					<Text style={Style.nodeFooter}>
+						{data.footer}
+					</Text>
+					
 				</View>
 				<View style={Style.nodeNumContainer}>
+					<Text style={Style.nodeNum}>{data.topics}</Text>
 				</View>
 			</View>
 		);			

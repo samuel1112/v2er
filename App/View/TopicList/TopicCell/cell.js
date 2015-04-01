@@ -10,21 +10,14 @@ var {
 
 var Style = require('./StyleSheet');
 
-// <TouchableHighLight onPress={this.props.onSelect}>
-			// 	<View style={Style.container}>
-			// 		<Text style={Style.title}>
-			// 			{this.props.title}
-			// 		</Text>
-					// <Text style={Style.content}>
-					// 	{this.props.data.content}
-					// </Text>
-			// 	</View>
-			// </TouchableHighLight>
 
 var cell = React.createClass({
 	render: function(){
 		var reply = null,
-			data = this.props.data;
+			data = this.props.data,
+			img = null;
+
+		console.log(this.props.showImg);
 		if(data.replies !== 0){
 			reply = (
 				<View style={Style.replyNumWrapper}>
@@ -33,6 +26,13 @@ var cell = React.createClass({
 					</View>
 				</View>
 			);
+		}
+
+		if(this.props.showImg){
+			img = <Image style={Style.avatar}
+				source={{
+					uri: 'https:'+data.member.avatar_normal
+				}} />
 		}
 		return (
 			<TouchableHighlight onPress={this.props.onSelect} underlayColor={'#d2f5ff'}>
@@ -48,11 +48,7 @@ var cell = React.createClass({
 						</View>
 						{reply}
 					</View>
-					
-					<Image style={Style.avatar}
-						source={{
-							uri: 'https:'+data.member.avatar_normal
-						}} />
+					{img}
 				</View>
 			</TouchableHighlight>
 		);
