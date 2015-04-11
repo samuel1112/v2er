@@ -13,7 +13,7 @@ var Api = require('../../WebApi/api');
 
 var ReplyCell = require('./ReplyCell/cell');
 
-var textRenderer = require('../../Util/textRenderer');
+var HTMLText = require('../../Util/HTMLText');
 
 
 function beautyTime(date){
@@ -89,7 +89,7 @@ var TopicView = React.createClass({
 					<View style={Style.header}>
 						<View style={Style.contentWrapper}>
 							<Text style={Style.content}>
-								{this.props.data.content}
+								<HTMLText html={this.props.data.content_rendered} />
 							</Text>
 						</View>
 					</View>

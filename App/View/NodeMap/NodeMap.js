@@ -9,7 +9,6 @@ var {
 
 var Style = require('./StyleSheet');
 var Api = require('../../WebApi/api');
-var textRender  = require('../../Util/textRenderer');
 
 var NodeMap = React.createClass({
 	getInitialState: function(){
