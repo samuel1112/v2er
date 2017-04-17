@@ -25,10 +25,10 @@ A simple v2ex client app, use React Native
   
   
 
-##TODO
+## TODO
 
 1. 增加断网提醒
 2. 增加节点的选择，显示相应的主题（这里打算使用 navigator 来模拟导航）
 3. 增加将 html 转化为 React native code 的函数 （雏形在 Util 中）
 
-#####BSD License
+##### BSD License
