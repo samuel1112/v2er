@@ -43,10 +43,10 @@ export default StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
-        paddingTop: 8,
-        paddingBottom: 8,
-        paddingLeft: 8,
-        paddingRight: 8,
+        paddingTop: 12,
+        paddingBottom: 12,
+        paddingLeft: 18,
+        paddingRight: 18,
         borderBottomWidth: 1,
         borderColor: Color.BORDER
     },
@@ -89,6 +89,35 @@ export default StyleSheet.create({
         color: Color.SUB
     },
     cellOtherWrapper: {
-        width: 80
+        width: 70,
+        position: 'relative'
+    },
+    cellAvatar: {
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginTop: 10,
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        zIndex: 5,
+        marginLeft: -20,
+        backgroundColor: Color.MAIN
+    },
+    cellReplies: {
+        position: 'absolute',
+        alignItems: 'center',
+        alignSelf: 'center',
+        justifyContent:'center',
+        marginTop: 10,
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        zIndex: 3,
+        left: 40,
+        backgroundColor: Color.BORDER,
+        overflow: 'hidden'
+    },
+    cellRepliesText: {
+
     }
 });

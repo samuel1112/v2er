@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableHighlight, Image } from 'react-native';
 import TopicStyle from './Styles/Topics';
 import Color from './Utils/Color';
 
@@ -31,7 +31,11 @@ export default class TopicsListItem extends Component {
                                 <Text style={TopicStyle.cellOtherInfoText}>{item.member.username}</Text>
                             </View>
                         </View>
-                        <View style={TopicStyle.cellOtherWrapper}>
+                    </View>
+                    <View style={TopicStyle.cellOtherWrapper}>
+                        <Image style={TopicStyle.cellAvatar} source={{uri: `https:${item.member.avatar_normal}`}} />
+                        <View style={TopicStyle.cellReplies}>
+                            <Text style={TopicStyle.cellRepliesText}>{item.replies}</Text>
                         </View>
                     </View>
                 </View>
