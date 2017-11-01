@@ -1,27 +1,23 @@
 {
   "name": "v2er",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
-  "devDependencies": {
-    "jest-expo": "^22.0.0",
-    "react-native-scripts": "1.6.0",
-    "react-test-renderer": "16.0.0"
-  },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
-  },
-  "jest": {
-    "preset": "jest-expo"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
-    "expo": "^22.0.0",
-    "react": "16.0.0",
-    "react-native": "^0.49.5",
+    "react": "16.0.0-beta.5",
+    "react-native": "0.49.5",
     "react-native-vector-icons": "^4.4.2"
+  },
+  "devDependencies": {
+    "babel-jest": "21.2.0",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "21.2.1",
+    "react-test-renderer": "16.0.0-beta.5"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }
