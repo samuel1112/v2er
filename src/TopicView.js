@@ -1,16 +1,12 @@
 
 import React, { Component } from 'react';
-import { View, Text, NavigatorIOS, FlatList } from 'react-native';
-import Color from './Utils/Color';
-import Style from './Styles/commons';
+import { FlatList,View,StatusBar } from 'react-native';
 import TopicStyle from './Styles/Topics';
 import API from './Utils/API';
 
 import TopicsListItem from './TopicListItem';
 
-
-
-class TopicsView extends Component {
+export default class TopicsView extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -45,12 +41,15 @@ class TopicsView extends Component {
         return data.id;
     };
 
-    _renderTopicCell = (data)=>{
-        return (
-            <TopicsListItem data={data} />
-        );
+    handleTopicDetail = (id)=>{
+        this.props.navigation.navigate(`TopicDetail`, {id: id});
     };
 
+    _renderTopicCell = (data)=>{
+        return (
+            <TopicsListItem data={data} onSelect={this.handleTopicDetail}/>
+        );
+    };
 
     render(){
         return (
@@ -63,26 +62,4 @@ class TopicsView extends Component {
             />
         );
     }
-}
-
-export default class Topics extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            netType: 1
-        };
-    }
-
-    render(){
-        return (
-            <NavigatorIOS style={Style.container}
-                          tintColor={Color.MAIN}
-                          initialRoute={{
-                              title: 'Latest Topic',
-                              component: TopicsView
-                          }}
-                          itemWrapperStyle={Style.navigator} />
-        );
-    }
-
 }

@@ -13,11 +13,18 @@ export default class TopicsListItem extends Component {
         };
     }
 
+    handlePress = ()=>{
+        const {onSelect, data:{item}} = this.props;
+        if(onSelect){
+            onSelect(item.id);
+        }
+    };
+
     render(){
         const {data:{item}, onSelect, ...props} = this.props;
 
         return (
-            <TouchableHighlight onPress={onSelect} underlayColor={Color.BORDER} {...props}>
+            <TouchableHighlight onPress={this.handlePress} underlayColor={Color.BORDER} {...props}>
                 <View style={TopicStyle.cell}>
                     <View style={TopicStyle.cellWrapper}>
                         <View style={TopicStyle.titleWrapper}>

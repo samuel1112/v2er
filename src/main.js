@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, TabBarIOS } from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import Color from './Utils/Color';
-import TopicView from './TopicView';
+import Topic from './TopicNavigation';
 
 
 export default class App extends Component {
@@ -27,7 +27,7 @@ export default class App extends Component {
                             selectedTab: "default",
                         });
                     }}>
-                    <TopicView />
+                    <Topic />
                 </Icon.TabBarItem>
                 <Icon.TabBarItem
                     title="Nodes"

@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "16.0.0-beta.5",
     "react-native": "0.49.5",
-    "react-native-vector-icons": "^4.4.2"
+    "react-native-vector-icons": "^4.4.2",
+    "react-navigation": "^1.0.0-beta.16"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",
