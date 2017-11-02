@@ -52,14 +52,17 @@ export default class TopicsView extends Component {
     };
 
     render(){
+        StatusBar.setBarStyle('default', true);
         return (
-            <FlatList style={TopicStyle.listView} data={this.state.data}
-                      onRefresh={this._fetchData}
-                      refreshing={this.state.pageLoading}
-                      extraData={this.state}
-                      keyExtractor={this._keyExtractor}
-                      renderItem={this._renderTopicCell}
-            />
+            <View style={TopicStyle.listView}>
+                <FlatList data={this.state.data}
+                          onRefresh={this._fetchData}
+                          refreshing={this.state.pageLoading}
+                          extraData={this.state}
+                          keyExtractor={this._keyExtractor}
+                          renderItem={this._renderTopicCell}
+                />
+            </View>
         );
     }
 }

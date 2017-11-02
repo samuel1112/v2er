@@ -15,7 +15,11 @@ export default StyleSheet.create({
         justifyContent: 'center'
     },
     listView: {
-        backgroundColor: Color.BACKGROUND
+        backgroundColor: Color.BACKGROUND,
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
     },
     loading: {
         backgroundColor: Color.BACKGROUND,
