@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react';
-import { FlatList,View,StatusBar } from 'react-native';
-import TopicStyle from './Styles/Topics';
+import { FlatList, View, StatusBar, Platform } from 'react-native';
 import API from './Utils/API';
+import Color from './Utils/Color';
 
 import TopicsListItem from './TopicListItem';
 
@@ -42,7 +42,10 @@ export default class TopicsView extends Component {
     };
 
     handleTopicDetail = (id)=>{
-        this.props.navigation.navigate(`TopicDetail`, {id: id});
+        this.props.navigator.push({
+
+        })
+        // this.props.navigation.navigate(`TopicDetail`, {id: id});
     };
 
     _renderTopicCell = (data)=>{
@@ -52,17 +55,15 @@ export default class TopicsView extends Component {
     };
 
     render(){
-        StatusBar.setBarStyle('default', true);
+        StatusBar.setBarStyle('light-content', true);
+        Platform.OS==='android' ? StatusBar.setBackgroundColor(Color.SUB) : null;
         return (
-            <View style={TopicStyle.listView}>
-                <FlatList data={this.state.data}
-                          onRefresh={this._fetchData}
-                          refreshing={this.state.pageLoading}
-                          extraData={this.state}
-                          keyExtractor={this._keyExtractor}
-                          renderItem={this._renderTopicCell}
-                />
-            </View>
+            <FlatList data={this.state.data}
+                      onRefresh={this._fetchData}
+                      refreshing={this.state.pageLoading}
+                      extraData={this.state}
+                      keyExtractor={this._keyExtractor}
+                      renderItem={this._renderTopicCell} />
         );
     }
 }
