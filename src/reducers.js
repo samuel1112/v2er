@@ -16,7 +16,7 @@ function topicType(state={type: 'latest', name: 'Latest'}, action){
     }
 }
 
-function topicDetail(state={}, action){
+function topicDetail(state=null, action){
     switch (action.type){
         case SET_TOPIC_DETAIL:
             return action.info;

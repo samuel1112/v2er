@@ -115,7 +115,25 @@ export default StyleSheet.create({
         backgroundColor: Color.BORDER,
         overflow: 'hidden'
     },
-    cellRepliesText: {
-
+    // detail
+    detailContainer: {
+        flex: 1,
+        backgroundColor:Color.SUB_BACKGROUND
+    },
+    detailTopic: {
+        flex: 1,
+        padding: 10,
+        marginBottom: 20,
+        backgroundColor: 'white'
+    },
+    detailTopicTitle: {
+        fontWeight:'bold',
+        color: Color.MAIN,
+        fontSize: 16,
+        paddingBottom: 10
+    },
+    detailTopicHTML: {
+        lineHeight: 16,
+        fontSize: 14
     }
 });

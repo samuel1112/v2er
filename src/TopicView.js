@@ -1,18 +1,20 @@
 
 import React, { Component } from 'react';
 import { FlatList, View, StatusBar, Platform } from 'react-native';
+import { connect } from 'react-redux'
 import API from './Utils/API';
 import Color from './Utils/Color';
+import {getLatest, getNodeList, setTopicDetial} from "./actions";
 
 import TopicsListItem from './TopicListItem';
+import TopicDetail from './TopicDetail';
 
-export default class TopicsView extends Component {
+class TopicsView extends Component {
     constructor(props){
         super(props);
         this.state = {
             data: [],
             loading: true,
-            currentPage: 0,
             pageLoading: false
         };
     }
@@ -21,6 +23,7 @@ export default class TopicsView extends Component {
     }
 
     _fetchData = ()=>{
+        const {topicType, dispatch} = this.props;
         if(this.state.pageLoading){
             return;
         }
@@ -28,13 +31,16 @@ export default class TopicsView extends Component {
             pageLoading: true
         });
         // console.log(this.state.currentPage);
-        API.getLatestTopic(null).then(res=>{
+        let getter = topicType.type === 'latest'?API.getLatestTopic:API.getNodeInfo;
+        let action = topicType.type === 'latest'?getLatest:getNodeList;
+
+        getter(null).then(res=>{
             this.setState({
-                data: res.sort((a,b)=>{return b.created - a.created;}),
                 loading: false,
-                currentPage: this.state.currentPage+1,
                 pageLoading: false
             });
+            console.log(res);
+            dispatch(action(res));
         }).done();
     };
     _keyExtractor = (data)=>{
@@ -42,9 +48,13 @@ export default class TopicsView extends Component {
     };
 
     handleTopicDetail = (id)=>{
+        const {dispatch} = this.props;
+        dispatch(setTopicDetial(id));
         this.props.navigator.push({
+            component: TopicDetail,
+            title: '',
 
-        })
+        });
         // this.props.navigation.navigate(`TopicDetail`, {id: id});
     };
 
@@ -58,7 +68,7 @@ export default class TopicsView extends Component {
         StatusBar.setBarStyle('light-content', true);
         Platform.OS==='android' ? StatusBar.setBackgroundColor(Color.SUB) : null;
         return (
-            <FlatList data={this.state.data}
+            <FlatList data={this.props.topics}
                       onRefresh={this._fetchData}
                       refreshing={this.state.pageLoading}
                       extraData={this.state}
@@ -67,3 +77,13 @@ export default class TopicsView extends Component {
         );
     }
 }
+
+function select(state) {
+    return {
+        topicType: state.topicType,
+        topics: state.topics
+    };
+}
+
+export default connect(select)(TopicsView);
+
