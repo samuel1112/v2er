@@ -149,7 +149,7 @@ export default StyleSheet.create({
         paddingBottom: 14
     },
     detailReplyInfo: {
-        padding: 6,
+        padding: 10,
         flexDirection: 'row',
         marginBottom: 6
     },
@@ -159,7 +159,7 @@ export default StyleSheet.create({
         borderRadius: 10,
         height: 20,
         minWidth: 20,
-        marginRight: 6,
+        marginRight: 10,
         marginLeft: -6,
         justifyContent: 'center'
     },

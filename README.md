@@ -14,7 +14,10 @@ A simple [v2ex](https://v2ex.com) client app, use React Native.
             "react-native": "^0.49.5",
         ```
     - 增加 `react-native-vector-icons` ，在 `npm install` 后需要运行 `react-native link`
-
+    - 使用新的语法进行功能的制作
+    - 增加 Store 部分的处理
+    - TODO
+        - 新的节点显示
 
 --- 2015-03-29
 
