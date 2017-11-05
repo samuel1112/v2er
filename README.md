@@ -7,17 +7,18 @@ A simple [v2ex](https://v2ex.com) client app, use React Native.
 
 
 --- UPDATE 2017-11-1
-    - 更新 react-native 到最新版本
 
-        ```
-            "react": "16.0.0-beta.5",
-            "react-native": "^0.49.5",
-        ```
-    - 增加 `react-native-vector-icons` ，在 `npm install` 后需要运行 `react-native link`
-    - 使用新的语法进行功能的制作
-    - 增加 Store 部分的处理
-    - TODO
-        - 新的节点显示
+- 更新 react-native 到最新版本
+```
+  "react": "16.0.0-beta.5",
+  "react-native": "^0.49.5",
+```
+- 增加 `react-native-vector-icons` ，在 `npm install` 后需要运行 `react-native link`
+- 使用新的语法进行功能的制作
+- 增加 Store 部分的处理
+- 优化代码结构，去除不必要的部分
+- TODO
+    - 新的节点显示
 
 --- 2015-03-29
 
