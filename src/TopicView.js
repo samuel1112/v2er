@@ -32,6 +32,7 @@ class TopicsView extends Component {
         });
         // console.log(this.state.currentPage);
         let getter = topicType.type === 'latest'?API.getLatestTopic:API.getNodeInfo;
+        console.log(getter);
         let action = topicType.type === 'latest'?getLatest:getNodeList;
 
         getter(null).then(res=>{
@@ -53,9 +54,9 @@ class TopicsView extends Component {
         this.props.navigator.push({
             component: TopicDetail,
             title: '',
-
+            backButtonTitle: '',
+            leftButtonTitle: ''
         });
-        // this.props.navigation.navigate(`TopicDetail`, {id: id});
     };
 
     _renderTopicCell = (data)=>{

@@ -1,11 +1,13 @@
 
 import React, { Component } from 'react';
-import { ScrollView, FlatList, View, Text, StatusBar, Platform, Dimensions } from 'react-native';
+import { ScrollView, View, Text, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux'
 import HTML from 'react-native-render-html';
 
 import TopicStyle from './Styles/Topics';
 import API from './Utils/API';
+import HTMLRenderers from './Utils/HTMLRenderers';
+import ReplyItem from "./ReplyItem";
 
 class TopicsDetail extends Component {
     constructor(props){
@@ -26,18 +28,10 @@ class TopicsDetail extends Component {
             });
         });
     };
-    _keyExtractor = (data)=>{
-        return data.id;
-    };
 
-    _renderReplyCell = (data)=>{
+    _renderReplyCell = (data, idx)=>{
         return (
-            <View style={{backgroundColor:'white', flex: 1, padding: 10}}>
-                <HTML html={data.content_rendered||' '}
-                      imagesMaxWidth={Dimensions.get('window').width*0.6}
-                      ignoredTags={['image','img']}
-                      style={TopicStyle.detailTopicHTML}/>
-            </View>
+            <ReplyItem key={idx} data={data} idx={idx}/>
         );
     };
 
@@ -47,17 +41,13 @@ class TopicsDetail extends Component {
         return (
             <ScrollView contentContainerStyle={TopicStyle.detailContainer}>
                 <View style={TopicStyle.detailTopic}>
-                    <View>
-                        <Text style={TopicStyle.detailTopicTitle}>
-                            {topicInfo.title}
-                        </Text>
-                    </View>
-                    <View>
-                        <HTML html={topicInfo.content_rendered||' '}
-                              imagesMaxWidth={Dimensions.get('window').width}
-                              ignoredTags={['image','img']}
-                              style={TopicStyle.detailTopicHTML}/>
-                    </View>
+                    <Text style={TopicStyle.detailTopicTitle}>
+                        {topicInfo.title}
+                    </Text>
+                    <HTML html={topicInfo.content_rendered||' '}
+                          containerStyle={TopicStyle.HTMLContainer}
+                          imagesMaxWidth={Dimensions.get('window').width}
+                          renderers={HTMLRenderers}/>
                 </View>
                 {this.state.replies.map(this._renderReplyCell)}
             </ScrollView>

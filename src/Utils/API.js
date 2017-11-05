@@ -27,7 +27,7 @@ function _obj2uri(obj){
     if(!obj){
         return '';
     }
-    return Object.keys(obj).map(function(k) {
+    return '?'+Object.keys(obj).map(function(k) {
         return encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]);
     }).join('&');
 }
@@ -38,19 +38,22 @@ function _getAllNode(){
 }
 
 function _getNodeInfo(o){
-    return HOST_URI+NODE_INFO+'?'+_obj2uri(o);
+    return HOST_URI+NODE_INFO+_obj2uri(o);
 }
 
 function _getLatestTopic(o){
-    return HOST_URI+LATEST_TOPIC+'?'+_obj2uri(o);
+    return HOST_URI+LATEST_TOPIC+_obj2uri(o);
 }
 
 function _getReplies(o){
-    return HOST_URI+GET_REPLIES+'?'+_obj2uri(o);
+    return HOST_URI+GET_REPLIES+_obj2uri(o);
 }
 
 function getData(api, data){
-    return fetch(api(data)).then(res=>res.json());
+    return fetch(api(data)).then(res=>{
+        console.log(res);
+        return res.json()
+    });
 }
 
 export default {

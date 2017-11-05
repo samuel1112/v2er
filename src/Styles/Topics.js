@@ -115,13 +115,19 @@ export default StyleSheet.create({
         backgroundColor: Color.BORDER,
         overflow: 'hidden'
     },
+    // HTML
+    HTMLContainer: {
+        flex: 1,
+        backgroundColor: 'white',
+        height: 'auto'
+    },
     // detail
     detailContainer: {
-        flex: 1,
-        backgroundColor:Color.SUB_BACKGROUND
+        // flex: 1,
+        // flexDirection: 'column',
+        backgroundColor:Color.SUB_BACKGROUND,
     },
     detailTopic: {
-        flex: 1,
         padding: 10,
         marginBottom: 20,
         backgroundColor: 'white'
@@ -132,8 +138,49 @@ export default StyleSheet.create({
         fontSize: 16,
         paddingBottom: 10
     },
-    detailTopicHTML: {
-        lineHeight: 16,
-        fontSize: 14
+    detailReplyItem: {
+        position: 'relative',
+        backgroundColor: 'white',
+        borderBottomWidth: 1,
+        borderBottomColor: Color.BORDER,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 6,
+        paddingBottom: 14
+    },
+    detailReplyInfo: {
+        padding: 6,
+        flexDirection: 'row',
+        marginBottom: 6
+    },
+    replyNum: {
+        padding: 4,
+        backgroundColor: Color.FADE,
+        borderRadius: 10,
+        height: 20,
+        minWidth: 20,
+        marginRight: 6,
+        marginLeft: -6,
+        justifyContent: 'center'
+    },
+    replyNumText: {
+        color: 'white',
+        textAlign: 'center',
+        lineHeight: 16
+    },
+    replyAvatar: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        marginRight: 6
+    },
+    replyName: {
+        height: 20
+    },
+    replyNameText: {
+        color: Color.FADE
+    },
+    replyContent: {
+        flex: 1
     }
 });
