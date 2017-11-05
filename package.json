@@ -3,10 +3,24 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
-    "htmlparser2": "^3.8.2",
-    "react-native": "^0.3.1"
+    "react": "16.0.0-beta.5",
+    "react-native": "0.49.5",
+    "react-native-render-html": "^3.5.0",
+    "react-native-vector-icons": "^4.4.2",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-jest": "21.2.0",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "21.2.1",
+    "react-test-renderer": "16.0.0-beta.5"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }
